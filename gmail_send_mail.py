@@ -56,16 +56,16 @@ class Gmail():
         pass
 
     def send_mail(self, recipient_address, subject, body):
-        print('Sending message, please wait...')
+        print('Sending your message, please wait...')
         try:
-            message = self.__create_message(sender_address, to_address, subject, body)
+            message = self.__create_message(sender_address, recipient_address, subject, body)
             credentials = self.get_credentials()
             service = self.__build_service(credentials)
             raw = message['raw']
             raw_decoded = raw.decode("utf-8")
             message = {'raw': raw_decoded}
             message_id = self.__send_message(service, 'me', message)
-            print('Message sent. Message ID: ' + message_id)
+            print('Message sent successfully to : ' + recipient_address)
         except TypeError:
             print("Please give your information correctly")
             
@@ -154,14 +154,21 @@ class Gmail():
         return build('gmail', 'v1', http=http)
 
 
+'''
+
+#------Uncomment this For testing----------------------------
 
 A = Gmail()
 
 A.get_credentials()
 
 
-to_address = input("enter address: ")
+to_address = input("enter recipient address: ")
 subject = input("enter subject: ")
 body = input("enter body: ")
 
 A.send_mail(to_address, subject, body)
+#----------------------------------------------
+
+'''
+
