@@ -1,0 +1,22 @@
+*.pyc
+__pycache__/
+*.idea
+
+
+# Distribution / packaging
+bin/
+build/
+develop-eggs/
+dist/
+eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+#Json File
+*.json
